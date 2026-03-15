@@ -118,4 +118,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // 6. Content Carousel Controls
+    const carousel = document.querySelector('.tiktok-carousel');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    if (carousel && prevBtn && nextBtn) {
+        const scrollAmount = () => {
+            const item = document.querySelector('.carousel-item');
+            if (item) {
+                // Return item's width + approximate gap
+                const style = window.getComputedStyle(carousel);
+                const gap = parseFloat(style.gap) || 32;
+                return item.offsetWidth + gap;
+            }
+            return 300;
+        };
+
+        prevBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+        });
+    }
 });

@@ -379,6 +379,19 @@ h2.subtitle {
   box-shadow: 0 10px 25px rgba(0, 119, 181, 0.3);
 }
 
+.btn-tiktok {
+  background: #000000;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-tiktok:hover {
+  background: #111111;
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 0, 80, 0.2), 0 -10px 25px rgba(0, 242, 254, 0.2);
+}
+
 .btn-outline {
   background: transparent;
   color: var(--text-primary);
@@ -796,6 +809,100 @@ h2.subtitle {
   color: var(--text-secondary);
   font-size: 0.95rem;
   margin-top: 0.5rem;
+}
+
+/* Content Carousel Section */
+.carousel-wrapper {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.tiktok-carousel {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 1rem 0;
+  width: 100%;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+
+.tiktok-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  min-height: 480px;
+  background: var(--glass-bg);
+}
+
+@media (min-width: 768px) {
+  .carousel-item {
+    flex: 0 0 calc(50% - 1rem); /* 2 items visible */
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel-item {
+    flex: 0 0 calc(33.333% - 1.33rem); /* 3 items visible */
+  }
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  font-size: 1.5rem;
+}
+
+.carousel-btn:hover {
+  background: rgba(59, 130, 246, 0.4);
+  border-color: rgba(59, 130, 246, 0.6);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+  left: -22px;
+}
+
+.next-btn {
+  right: -22px;
+}
+
+@media (max-width: 768px) {
+  .prev-btn { left: -10px; }
+  .next-btn { right: -10px; }
+}
+
+/* Ensure tiktok iframe fits well */
+.tiktok-embed {
+  margin: 0 !important;
+  width: 100% !important;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .skills-card h3 {
